@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="offer"
+            type="com.example.sahem.model.Offer" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="6dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:scaleType="centerCrop"
+            app:setShapeableImage="@{offer.cover}"
+            app:shapeAppearanceOverlay="@style/customRoundedImageView"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/tajawal_bold"
+            android:lineSpacingExtra="48sp"
+            android:text="@{offer.name}"
+            android:textColor="@color/text_color"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:text="Restaurant Reservation" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:drawablePadding="5dp"
+            android:fontFamily="@font/tajawal_regular"
+            android:lineSpacingExtra="51sp"
+            android:text='@{offer.maxDeliveryTime.toString() + " mins"}'
+            android:textColor="@color/light_grey"
+            android:textSize="11sp"
+            android:textStyle="normal"
+            app:drawableStartCompat="@drawable/ic_time"
+            tools:text="40 mins" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/tajawal_medium"
+                android:lineSpacingExtra="8sp"
+                android:text="@{offer.avgRating.toString()}"
+                android:textColor="@color/text_color"
+                android:textSize="11sp"
+                android:textStyle="normal"
+                app:drawableStartCompat="@drawable/ic_star"
+                tools:text="4.9" />
+            <!-- I did not find the rating count in response -->
+            <!--            <TextView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="4dp"-->
+            <!--                android:fontFamily="@font/tajawal_medium"-->
+            <!--                android:lineSpacingExtra="8sp"-->
+            <!--                android:textColor="@color/light_grey"-->
+            <!--                android:textSize="12sp"-->
+            <!--                android:textStyle="normal"-->
+            <!--                android:text='(210 ratings)'-->
+            <!--                tools:text="(210 ratings)" />-->
+        </LinearLayout>
+    </LinearLayout>
+</layout>

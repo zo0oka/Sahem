@@ -2,4 +2,21 @@
     <string name="app_name">Sahem</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="cart">Cart</string>
+    <string name="orders">Orders</string>
+    <string name="offers">Offers</string>
+    <string name="more">More</string>
+    <string name="what_you_would_like_to_order">What you would like to order</string>
+    <string name="choose_restaurants">Choose Restaurants</string>
+    <string name="your_first_order_is_free">Your first Order is free</string>
+    <string name="items_delivery">Items Delivery</string>
+    <string name="reserve_table">Reserve Table</string>
+    <string name="subcategories">Subcategories</string>
+    <string name="categories">Categories</string>
+    <string name="category_item">Category ITem</string>
+    <string name="best_rating">Best rating</string>
+    <string name="best_offers">Best Offers</string>
+    <string name="offer_image">Offer Image</string>
+    <string name="offer_brand">Offer Brand</string>
 </resources>
