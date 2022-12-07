@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+<variable
+    name="viewModel"
+    type="com.example.saham.viewmodels.MainViewModel" />
+        <import type="android.view.View"/>
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -297,10 +300,16 @@
             <Space
                 android:layout_width="0dp"
                 android:layout_height="11dp" />
-
+            <ProgressBar
+                android:layout_width="30dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="@{viewModel.loadingCategories ? View.VISIBLE : View.GONE}"
+                tools:visibility="gone"
+                android:layout_height="30dp"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="@{viewModel.loadingCategories ? View.GONE : View.VISIBLE}"
                 android:id="@+id/categories_recycler_view"
                 android:orientation="horizontal"
                 android:paddingHorizontal="10dp"
@@ -325,12 +334,31 @@
 
             <Space
                 android:layout_width="0dp"
-                android:layout_height="11dp" />
-
+                android:layout_height="12dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/tajawal_medium"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="49sp"
+                android:visibility="@{(viewModel.topRated.size() == 0 &amp;&amp; viewModel.loadingTopRated == false) ? View.VISIBLE : View.GONE}"
+                android:text="@string/no_data"
+                tools:visibility="gone"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/text_color"
+                android:textSize="13sp"
+                android:textStyle="normal" />
+            <ProgressBar
+                android:layout_width="30dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="@{viewModel.loadingTopRated ? View.VISIBLE : View.GONE}"
+                tools:visibility="gone"
+                android:layout_height="30dp"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:visibility="@{(viewModel.topRated.size() != 0 &amp;&amp; viewModel.loadingTopRated == false) ? View.VISIBLE : View.GONE}"
                 android:paddingHorizontal="10dp"
                 android:id="@+id/best_rating_recycler_view"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -351,17 +379,41 @@
                 android:textColor="@color/text_color"
                 android:textSize="20sp"
                 android:textStyle="bold" />
-
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="12dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/tajawal_medium"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="49sp"
+                android:visibility="@{(viewModel.bestOffers.size() == 0 &amp;&amp; viewModel.loadingBestOffers == false) ? View.VISIBLE : View.GONE}"
+                android:text="@string/no_data"
+                android:layout_gravity="center_horizontal"
+                tools:visibility="gone"
+                android:textColor="@color/text_color"
+                android:textSize="13sp"
+                android:textStyle="normal" />
+            <ProgressBar
+                android:layout_width="30dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="@{viewModel.loadingBestOffers ? View.VISIBLE : View.GONE}"
+                tools:visibility="gone"
+                android:layout_height="30dp"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
                 android:id="@+id/best_offers_recycler_view"
                 android:orientation="horizontal"
+                android:visibility="@{(viewModel.bestOffers.size() != 0 &amp;&amp; viewModel.loadingBestOffers == false) ? View.VISIBLE : View.GONE}"
                 android:paddingHorizontal="10dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="7"
                 tools:listitem="@layout/item_offer" />
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="24dp"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

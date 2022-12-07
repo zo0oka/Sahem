@@ -1,129 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:background="@color/black"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/toolbar_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <data>
 
-        <LinearLayout
+        <variable
+            name="address"
+            type="String" />
+        <variable
+            name="handler"
+            type="com.example.saham.interfaces.AddressListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:background="@color/black"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:paddingVertical="10dp"
-            android:paddingStart="0dp"
-            android:paddingEnd="16dp">
-
-            <ImageView
-                android:layout_width="45dp"
-                android:layout_height="55dp"
-                android:src="@drawable/logo_small"
-                tools:ignore="ContentDescription" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbar_background">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="14dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:paddingVertical="10dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="16dp">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/logo_small"
+                    tools:ignore="ContentDescription" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_location" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:fontFamily="@font/tajawal_regular"
-                        android:lineSpacingExtra="12sp"
-                        android:textColor="@color/text_color"
-                        android:textSize="13sp"
-                        android:textStyle="normal"
-                        tools:text="Deliver to" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:layout_weight="1"
-                        android:ellipsize="end"
-                        android:fontFamily="@font/tajawal_bold"
-                        android:lineSpacingExtra="11sp"
-                        android:lines="1"
-                        android:textColor="@color/text_color"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        tools:text="Riyadh - Malek Fahd Street" />
-                </LinearLayout>
-
-                <Space
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="34dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="14dp"
                     android:layout_weight="1"
-                    android:background="@drawable/search_background"
-                    android:drawableStart="@drawable/ic_search"
-                    android:drawablePadding="7dp"
-                    android:fontFamily="@font/tajawal_regular"
-                    android:hint="Search for a restaurant or store"
-                    android:lineSpacingExtra="11sp"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="13dp"
-                    android:textColor="#b3b3b3"
-                    android:textColorHint="#b3b3b3"
-                    android:textSize="14sp"
-                    android:textStyle="normal">
+                    android:orientation="vertical">
 
-                </EditText>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:onClick="@{() -> handler.onAddressClick()}"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_location" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:fontFamily="@font/tajawal_regular"
+                            android:lineSpacingExtra="12sp"
+                            android:text="@string/deliver_to"
+                            android:textColor="@color/text_color"
+                            android:textSize="13sp"
+                            android:textStyle="normal" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/tajawal_bold"
+                            android:lineSpacingExtra="11sp"
+                            android:lines="1"
+                            android:text="@{address}"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            tools:text="Riyadh - Malek Fahd Street" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:rotation="270"
+                            android:src="@drawable/arrow_down"/>
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="34dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/search_background"
+                        android:drawableStart="@drawable/ic_search"
+                        android:drawablePadding="7dp"
+                        android:fontFamily="@font/tajawal_regular"
+                        android:hint="Search for a restaurant or store"
+                        android:lineSpacingExtra="11sp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="13dp"
+                        android:textColor="#b3b3b3"
+                        android:textColorHint="#b3b3b3"
+                        android:textSize="14sp"
+                        android:textStyle="normal">
+
+                    </EditText>
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </androidx.appcompat.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:navGraph="@navigation/nav_graph" />
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="0dp"
-        app:itemBackground="@drawable/item_background"
-        android:layout_height="wrap_content"
-        app:elevation="6dp"
-        android:background="@drawable/bottom_nav_background"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nav_host_fragment"
-        app:menu="@menu/navigation_menu" />
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_nav_background"
+            app:elevation="6dp"
+            app:itemBackground="@drawable/item_background"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nav_host"
+            app:menu="@menu/navigation_menu" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</layout>
